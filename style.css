@@ -17,10 +17,10 @@ main > div {
   margin: 0.5rem;
 }
 
-div.playing{
-    transform: scale(1,1);
-    border-color: yellow;
-    box-shadow: 0 0 10px yellow;
+div.playing {
+  transform: scale(1.1);
+  border-color: yellow;
+  box-shadow: 0 0 10px yellow;
 }
 
 .key {
@@ -31,7 +31,7 @@ div.playing{
   align-items: center;
   padding: 0.5rem;
   background-color: #00000036;
-  transition: all 0.07s;
+  transition: all 0.05s;
 }
 
 .key > kbd {

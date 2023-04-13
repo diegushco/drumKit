@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Drum Kit</title>
-</head>
-<body>
+  </head>
+  <body>
     <main>
-        <div data-key="65" class="key playing">
-            <kbd>A</kbd>
-            <span class="sound">tink</span>
-        </div>
-        <div data-key="83" class="key">
-            <kbd>S</kbd>
-            <span class="sound">tink</span>
-        </div>
-        <div data-key="68" class="key">
-            <kbd>D</kbd>
-            <span class="sound">tink</span>
-        </div>
-        <div data-key="70" class="key">
-            <kbd>F</kbd>
-            <span class="sound">tink</span>
-        </div>
-        <div data-key="71" class="key">
-            <kbd>G</kbd>
-            <span class="sound">tink</span>
-        </div>
-        <div data-key="72" class="key">
-            <kbd>H</kbd>
-            <span class="sound">tink</span>
-        </div>
-        <div data-key="74" class="key">
-            <kbd>I</kbd>
-            <span class="sound">tink</span>
-        </div>
-        <div data-key="75" class="key">
-            <kbd>J</kbd>
-            <span class="sound">tink</span>
-        </div>
-        <div data-key="76" class="key">
-            <kbd>L</kbd>
-            <span class="sound">tink</span>
-        </div>
+      <div data-key="65" class="key">
+        <kbd>A</kbd>
+        <span class="sound">tink</span>
+      </div>
+      <div data-key="83" class="key">
+        <kbd>S</kbd>
+        <span class="sound">tink</span>
+      </div>
+      <div data-key="68" class="key">
+        <kbd>D</kbd>
+        <span class="sound">tink</span>
+      </div>
+      <div data-key="70" class="key">
+        <kbd>F</kbd>
+        <span class="sound">tink</span>
+      </div>
+      <div data-key="71" class="key">
+        <kbd>G</kbd>
+        <span class="sound">tink</span>
+      </div>
+      <div data-key="72" class="key">
+        <kbd>H</kbd>
+        <span class="sound">tink</span>
+      </div>
+      <div data-key="74" class="key">
+        <kbd>I</kbd>
+        <span class="sound">tink</span>
+      </div>
+      <div data-key="75" class="key">
+        <kbd>J</kbd>
+        <span class="sound">tink</span>
+      </div>
+      <div data-key="76" class="key">
+        <kbd>L</kbd>
+        <span class="sound">tink</span>
+      </div>
     </main>
 
     <audio data-key="65" src="assets/sounds/clap.wav"></audio>
@@ -56,11 +56,28 @@
     <audio data-key="74" src="assets/sounds/snare.wav"></audio>
     <audio data-key="75" src="assets/sounds/tom.wav"></audio>
     <audio data-key="76" src="assets/sounds/tink.wav"></audio>
-
-</body>
+  </body>
 </html>
 <script>
-    window.addEventListener('keydown', (e)=>{
-        console.log(e)
-    })
+  window.addEventListener("keydown", (e) => {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+    if (!audio) return;
+    audio.currentTime = 0;
+
+    audio.play();
+    key.classList.add("playing");
+  });
+
+  function removeTransition(e) {
+    if (e.propertyName !== "transform") return;
+
+    this.classList.remove("playing");
+  }
+
+  const keys = document.querySelectorAll(".key");
+  keys.forEach((key) =>
+    key.addEventListener("transitionend", removeTransition)
+  );
 </script>
