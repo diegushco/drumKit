@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+}
+
+main {
+  background-image: url(./assets/bg.jpg);
+  background-size: cover; /* Ajustar el tamaño para cubrir el área completa del main */
+  background-position: center center; /* Centrar la imagen tanto vertical como horizontalmente */
+  background-repeat: no-repeat; /* Evitar la repetición de la imagen */
+  height: 100vh; /* Establecer el alto del main al 100% del alto de la ventana */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main > div {
+  margin: 0.5rem;
+}
+
+div.playing{
+    transform: scale(1,1);
+    border-color: yellow;
+    box-shadow: 0 0 10px yellow;
+}
+
+.key {
+  border: 2px solid #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: #00000036;
+  transition: all 0.07s;
+}
+
+.key > kbd {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.key > span {
+  color: #f6f921;
+}
